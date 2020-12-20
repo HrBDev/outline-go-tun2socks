@@ -10,10 +10,10 @@ jobs:
     steps:
       - checkout
       - run:
-        command: |
-          go get -d ./...
-          go get golang.org/x/mobile/cmd/gomobile
-          alias gomobile=../go/bin/gomobile
-          ./build_android.sh
+          command: |
+            go get -d ./...
+            go get golang.org/x/mobile/cmd/gomobile
+            alias gomobile=../go/bin/gomobile
+            ./build_android.sh
       - store_artifacts:
           path: /build/android
