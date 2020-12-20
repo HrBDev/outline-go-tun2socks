@@ -9,9 +9,11 @@ jobs:
       GRADLE_OPTS: -Dorg.gradle.workers.max=1 -Dorg.gradle.daemon=false -Dkotlin.compiler.execution.strategy="in-process"
     steps:
       - checkout
-      - run: go get -d ./...
-      - run: go get golang.org/x/mobile/cmd/gomobile
-      - run: export PATH=../go/bin:$PATH
-      - run: ./build_android.sh
+      - run:
+        command: |
+          go get -d ./...
+          go get golang.org/x/mobile/cmd/gomobile
+          alias gomobile=../go/bin/gomobile
+          ./build_android.sh
       - store_artifacts:
-          path: /tmp/artifacts
+          path: /build/android
