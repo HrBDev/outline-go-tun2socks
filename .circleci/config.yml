@@ -10,4 +10,7 @@ jobs:
     steps:
       - checkout
       - run: go get -d ./...
+      - run: go get golang.org/x/mobile/cmd/gomobile
       - run: ./build_android.sh
+      - store_artifacts:
+          path: /tmp/artifacts
